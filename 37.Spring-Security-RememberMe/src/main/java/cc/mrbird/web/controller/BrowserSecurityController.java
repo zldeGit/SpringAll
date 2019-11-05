@@ -33,7 +33,7 @@ public class BrowserSecurityController {
             String targetUrl = savedRequest.getRedirectUrl();
             if (StringUtils.endsWithIgnoreCase(targetUrl, ".html"))
                 redirectStrategy.sendRedirect(request, response, "/login.html");
-        }
+	}
         return "访问的资源需要身份认证！";
     }
 }

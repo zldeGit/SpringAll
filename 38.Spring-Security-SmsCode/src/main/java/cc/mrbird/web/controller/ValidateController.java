@@ -34,11 +34,11 @@ public class ValidateController {
     }
 
     @GetMapping("/code/sms")
-    public void createSmsCode(HttpServletRequest request, HttpServletResponse response, String mobile) {
+    public String  createSmsCode(HttpServletRequest request, HttpServletResponse response, String mobile) {
         SmsCode smsCode = createSMSCode();
         sessionStrategy.setAttribute(new ServletWebRequest(request), SESSION_KEY_SMS_CODE + mobile, smsCode);
-        // 输出验证码到控制台代替短信发送服务
-        System.out.println("您的登录验证码为：" + smsCode.getCode() + "，有效时间为60秒");
+		//        // 输出验证码到控制台代替短信发送服务
+       return smsCode.getCode();
     }
 
     private SmsCode createSMSCode() {
